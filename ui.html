@@ -1,17 +1,33 @@
-<h2>Rectangle Creator</h2>
+<!-- <h2>Rectangle Creator</h2>
 <p>Count: <input id="count" value="5"></p>
 <button id="create">Create</button>
 <button id="cancel">Cancel</button>
+<p> -->
+  <br>
+<textarea autofocus id='input'></textarea>
+<button id="send">Send</button>
+<button id="check">check</button>
+</p>
+
 <script>
-
-document.getElementById('create').onclick = () => {
-  const textbox = document.getElementById('count');
-  const count = parseInt(textbox.value, 10);
-  parent.postMessage({ pluginMessage: { type: 'create-rectangles', count } }, '*')
-}
-
-document.getElementById('cancel').onclick = () => {
-  parent.postMessage({ pluginMessage: { type: 'cancel' } }, '*')
-}
-
+  document.getElementById('send').onclick = () => {
+    const textbox = document.getElementById('input');
+    const text = textbox.value
+    parent.postMessage({ pluginMessage: { type: 'input', text } }, '*')  
+  }
+  document.getElementById('check').onclick = () => {
+    parent.postMessage({ 
+      pluginMessage: { 
+        type: 'call'
+      }
+    }, '*')  
+  }
+  // document.getElementById('create').onclick = () => {
+  //   const textbox = document.getElementById('count');
+  //   const count = parseInt(textbox.value, 10);
+  //   parent.postMessage({ pluginMessage: { type: 'create-rectangles', count } }, '*')
+  // }
+  // document.getElementById('cancel').onclick = () => {
+  //   parent.postMessage({ pluginMessage: { type: 'cancel' } }, '*')
+  // }
 </script>
