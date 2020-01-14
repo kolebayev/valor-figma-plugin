@@ -103,9 +103,6 @@ const variablesMap = {
   "color-base-system": ["color-bg-system", "color-typo-system"]
 };
 
-const FigmaAPIKey = "22576-9145d351-5f79-4878-81de-bd10943145d7";
-const FigmaFileID = "vwwHtidFIGvN88g9k4yFfh";
-
 function traverse(o) {
   for (let i = 0; i < o.length; i++) {
     if (o[i].type === "ELLIPSE" || o[i].type === "RECTANGLE") {
