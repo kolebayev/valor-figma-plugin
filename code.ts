@@ -68,11 +68,11 @@ const drawItem = parsedString => {
   const [variableName, variableHEX] = parsedString.split(":");
   const blackColor = { r: 0.06, g: 0.06, b: 0.06 };
   const ellipseSize = 60;
-    const textPosX:number = ellipseSize * 1.25
+  const textPosX: number = ellipseSize * 1.25
 
   const ellipse = figma.createEllipse();
   const ellipseColor = hex2rgb(variableHEX);
-  ellipse.y = 0;
+  ellipse.y = 3;
   ellipse.x = 0;
   ellipse.name = variableName;
   ellipse.resize(ellipseSize, ellipseSize);
@@ -142,24 +142,31 @@ figma.ui.onmessage = async msg => {
     const NEWLINE = /\r?\n|\r/g;
     const SPACE = /\s/g;
 
-    let variableStrings = msg.text.split(";");
-    console.log(variableStrings);
-    let counter: number = 0;
-    for (let i = 0; i < variableStrings.length; i++) {
-      variableStrings[i] = variableStrings[i]
-        .replace(NEWLINE, "")
+    const inputStrings = msg.text.split(";").map(el => {
+      return el.replace(NEWLINE, "")
         .replace(COMMENTS, "")
         .replace("$", "")
         .replace(SPACE, "");
-      if (variableStrings[i] !== "") {
-        let item = drawItem(variableStrings[i])
-        item.y = i * 100;
-        if (counter === 5) {
-            item.x = i * 100;
-        }
-      }
-      counter++
+    });
+
+    const variableStrings = inputStrings.filter(function (el) {
+      return el != '';
+    });
+    
+    const rowsQty = 5;
+    const clearStrings = []; 
+    for (let i = 0; i < Math.ceil(variableStrings.length / rowsQty); i++) {
+      clearStrings[i] = variableStrings.slice((i * rowsQty), (i * rowsQty) + rowsQty);
     }
+
+    for (let i = 0; i < clearStrings.length; i++) {
+      for (let j = 0; j < clearStrings[i].length; j++) {
+        let item = drawItem(clearStrings[i][j])
+        item.y = j * 100;
+        item.x = i * 300
+      }
+    }
+
     figma.currentPage.selection = nodes;
     figma.viewport.scrollAndZoomIntoView(nodes);
   }
