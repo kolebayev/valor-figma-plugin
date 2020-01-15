@@ -1,12 +1,7 @@
-<br>
-<textarea autofocus id='input'></textarea>
-<button id="send" value>Send</button>
-<button id="check">check</button>
-</p>
+import './ui.css'
 
-<script>
-  document.getElementById('send').onclick = () => {
-    const textbox = document.getElementById('input');
+document.getElementById('send').onclick = () => {
+    const textbox = document.getElementById('input') as HTMLInputElement
     const text = textbox.value
     // const text = `
     //   $color-base-base: #f6fbfd; /* Базовый цвет содержимого, от которого выстраиваются цвета текста, иконок, ... */
@@ -32,4 +27,3 @@
   // document.getElementById('cancel').onclick = () => {
   //   parent.postMessage({ pluginMessage: { type: 'cancel' } }, '*')
   // }
-</script>

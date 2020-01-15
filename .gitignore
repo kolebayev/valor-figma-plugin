@@ -1,4 +1,3 @@
-./code.js
-code.js
 .DS_store
 node_modules
+dist
