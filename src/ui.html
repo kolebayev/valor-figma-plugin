@@ -1,5 +1,45 @@
-<br>
+<!-- <br>
 <textarea autofocus id='input'></textarea>
 <button id="send" class="btn_send" value>Send</button>
-<button id="check">check</button>
-</p>
+<button id="check">check</button> -->
+
+
+<div class="layout">
+  <div class="heading">vars <span class='heading_arrow'>→</span> colors</div>
+  <div class="subheading">
+    All of variable notations below are valid:
+  </div>
+  <pre><code>--main-bg-color: #f6fbfd; 
+$color-base-project: #0071b2;</code></pre>
+
+<textarea placeholder="Paste variables list" autofocus id='input'></textarea>
+
+<div class="subheading">
+  Items rendering style
+</div>
+
+<div class="render-style">
+  
+
+  <div class="draw draw-circle">
+    <img src="<%= require('./img/draw-circle.svg').default %>">
+  </div>
+  <!-- https://codepen.io/andreasstorm/pen/GzOZOb -->
+
+  <!-- <div class="draw draw-circle">
+    <img src="<%= require('./img/draw-circle.svg').default %>">
+
+  </div> -->
+  <div class="draw draw-rectangle">
+    <img src="<%= require('./img/draw-rectangle.svg').default %>">
+  </div>
+</div>
+
+
+
+
+  <br>
+  <!-- <textarea autofocus id='input'></textarea> -->
+  <button id="send" class="btn_send" value>Send</button>
+  <button id="check">check</button>
+</div>
