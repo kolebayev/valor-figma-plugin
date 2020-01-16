@@ -1,5 +1,6 @@
 const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackInlineSVGPlugin = require('html-webpack-inline-svg-plugin');
 const path = require('path')
 
 module.exports = (env, argv) => ({
@@ -43,5 +44,8 @@ module.exports = (env, argv) => ({
       chunks: ['ui'],
     }),
     new HtmlWebpackInlineSourcePlugin(),
-  ],
+    new HtmlWebpackInlineSVGPlugin({
+      runPreEmit: true
+    })
+  ]
 })
