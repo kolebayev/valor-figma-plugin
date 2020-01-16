@@ -1,13 +1,7 @@
-<!-- <br>
-<textarea autofocus id='input'></textarea>
-<button id="send" class="btn_send" value>Send</button>
-<button id="check">check</button> -->
-
-
 <div class="layout">
   <div class="heading">vars <span class='heading_arrow'>→</span> colors</div>
   <div class="subheading">
-    All of variable notations below are valid:
+    All notations below are valid:
   </div>
   <pre><code>--main-bg-color: #f6fbfd; 
 $color-base-project: #0071b2;</code></pre>
@@ -19,27 +13,29 @@ $color-base-project: #0071b2;</code></pre>
 </div>
 
 <div class="render-style">
-  
 
-  <div class="draw draw-circle">
-    <img src="<%= require('./img/draw-circle.svg').default %>">
-  </div>
-  <!-- https://codepen.io/andreasstorm/pen/GzOZOb -->
+  <input type="radio" name="radioButton" value="circle" id='circle' checked/>
+  <label for='circle' class="draw">
+    <img inline src="src/img/draw-circle.svg">
+  </label>
 
-  <!-- <div class="draw draw-circle">
-    <img src="<%= require('./img/draw-circle.svg').default %>">
+  <input type="radio" name="radioButton" value="rectangle" id='rectangle'/>
+  <label class="draw" for='rectangle'>
+    <img inline src="src/img/draw-rectangle.svg">
+  </label>
 
-  </div> -->
-  <div class="draw draw-rectangle">
-    <img src="<%= require('./img/draw-rectangle.svg').default %>">
-  </div>
 </div>
 
+</div>
 
-
-
-  <br>
-  <!-- <textarea autofocus id='input'></textarea> -->
-  <button id="send" class="btn_send" value>Send</button>
-  <button id="check">check</button>
+<div class='layout-divider'> 
+  <div class='layout'>
+    <div class='footer'>
+      <button class='button button-secondary' id='clear'>Clear data</button>
+      <div class='validation-wrapper'>
+        <span class='error'></span>
+        <button class='button button-primary' id="send">Draw</button>
+      </div>
+    </div>
+  </div>
 </div>
