@@ -1,7 +1,10 @@
 import { hex2rgb, rgb2hsl } from './colorConverter'
 
 const drawCircle = parsedString => {
+  try {
     const [variableName, variableHEX] = parsedString.split(":");
+    let h = variableHEX.length
+    // h != 7 || h != 6 || h != 4 || h != 3 && throw new Error();
     const blackColor = { r: 0.06, g: 0.06, b: 0.06 };
     const ellipseSize = 60;
     const textPosX: number = ellipseSize * 1.25
@@ -67,6 +70,10 @@ const drawCircle = parsedString => {
     nodesGroup.name = variableName;
   
     return nodesGroup;
-  };
+  } catch (err) {
+    console.log(err)
+    figma.ui.postMessage('draw_error')
+  }
+};
 
-  export default drawCircle;
+export default drawCircle;

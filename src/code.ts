@@ -1,7 +1,7 @@
 
 import drawCircle from './utils/drawCircle'
 figma.showUI(__html__);
-figma.ui.resize(400 , 600)
+figma.ui.resize(400 , 506)
 
 figma.ui.onmessage = async msg => {
   await figma.loadFontAsync({ family: "Roboto", style: "Regular" });
@@ -31,9 +31,13 @@ figma.ui.onmessage = async msg => {
 
     for (let i = 0; i < clearStrings.length; i++) {
       for (let j = 0; j < clearStrings[i].length; j++) {
-        let item = drawCircle(clearStrings[i][j])
+        let item;
+        msg.renderChecked === 'circle' ?
+          item = drawCircle(clearStrings[i][j])
+        :
+          console.log('rect')
         item.y = j * 100;
-        item.x = i * 300
+        item.x = i * 300 
       }
     }
 
