@@ -1,16 +1,19 @@
-import './ui.css'
+import './ui.scss'
 
 const textbox = document.getElementById('input') as HTMLInputElement
-const circleCheck = document.getElementById('circle')
-const rectangleCheck = document.getElementById('rectangle')
+const circleCheck = document.getElementById('circle') as HTMLInputElement
+const rectangleCheck = document.getElementById('rectangle') as HTMLInputElement
 const textError = document.querySelector('.error')
 
-document.getElementById('clear').onclick = () => {
+const clearBtnActions = () => {
   textbox.value = ''
   circleCheck.checked = true
   rectangleCheck.checked = false
   textError.innerHTML = '';
+  textbox.classList.remove('textareaError')
 }
+
+document.getElementById('clear').addEventListener('click', clearBtnActions)
 
 document.getElementById('send').onclick = () => {
   const text = textbox.value
@@ -24,7 +27,6 @@ document.getElementById('send').onclick = () => {
     }, '*')  
   :
     textError.innerHTML = 'Paste data to textarea';
-    // textbox.focus()
     textbox.classList.add('textareaError')
 }
 
@@ -34,21 +36,5 @@ textbox.addEventListener('focus', () => {
 })
 
 onmessage = (e) => {
-  e.data.pluginMessage === 'draw_error' && textError.innerHTML = 'Syntax error, check data'
+  e.data.pluginMessage === 'draw_error' ? textError.innerHTML = 'Syntax error, check data' : '';
 }
-
-// document.getElementById('check').onclick = () => {
-//   parent.postMessage({ 
-//     pluginMessage: { 
-//       type: 'call'
-//     }
-//   }, '*')  
-// }
-  // document.getElementById('create').onclick = () => {
-  //   const textbox = document.getElementById('count');
-  //   const count = parseInt(textbox.value, 10);
-  //   parent.postMessage({ pluginMessage: { type: 'create-rectangles', count } }, '*')
-  // }
-  // document.getElementById('cancel').onclick = () => {
-  //   parent.postMessage({ pluginMessage: { type: 'cancel' } }, '*')
-  // }

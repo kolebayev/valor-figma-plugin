@@ -1,7 +1,7 @@
 
 import drawCircle from './utils/drawCircle'
 figma.showUI(__html__);
-figma.ui.resize(400 , 506)
+figma.ui.resize(400 , 516)
 
 figma.ui.onmessage = async msg => {
   await figma.loadFontAsync({ family: "Roboto", style: "Regular" });

@@ -1,5 +1,12 @@
 <div class="layout">
-  <div class="heading">vars <span class='heading_arrow'>→</span> colors</div>
+
+  <div class='header'>
+    <div class='header_logo'>
+      <img inline src="src/img/logo.svg">
+    </div>
+    <div class="header_text">vars <span class='header_arrow'>→</span> colors</div>
+  </div>
+
   <div class="subheading">
     All notations below are valid:
   </div>
@@ -15,12 +22,12 @@ $color-base-project: #0071b2;</code></pre>
 <div class="render-style">
 
   <input type="radio" name="radioButton" value="circle" id='circle' checked/>
-  <label for='circle' class="draw">
+  <label for='circle' class="render-style_draw">
     <img inline src="src/img/draw-circle.svg">
   </label>
 
   <input type="radio" name="radioButton" value="rectangle" id='rectangle'/>
-  <label class="draw" for='rectangle'>
+  <label class="render-style_draw" for='rectangle'>
     <img inline src="src/img/draw-rectangle.svg">
   </label>
 
@@ -31,10 +38,10 @@ $color-base-project: #0071b2;</code></pre>
 <div class='layout-divider'> 
   <div class='layout'>
     <div class='footer'>
-      <button class='button button-secondary' id='clear'>Clear data</button>
+      <button class='button button_secondary' id='clear'>Clear data</button>
       <div class='validation-wrapper'>
         <span class='error'></span>
-        <button class='button button-primary' id="send">Draw</button>
+        <button class='button button_primary' id="send">Draw</button>
       </div>
     </div>
   </div>
