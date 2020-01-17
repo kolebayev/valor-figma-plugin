@@ -1,49 +1,78 @@
-<div class="layout layout_vars2colors">
-
-  <div class='header'>
-    <div class='header_logo'>
-      <img inline src="src/img/logo.svg">
+<div class="layout">
+  <div class="header">
+    <div class="header_logo">
+      <img inline src="src/img/logo.svg" />
     </div>
-    <div class="header_text">variables<span class='header_arrow'>→</span>colors</div>
-    <!-- <div class="header_text">сolors<span class='header_arrow'>→</span>vars</div> -->
-  </div>
+    <div class="header_mode-switcher">
 
+
+
+      <input type="radio" name="radioButton" value="showV2C" id="checkboxV2C" />
+      <label  for="showV2C" class="header_showV2C">
+        <button class="button">vars2colors</button>
+      </label>
+
+      <input type="radio" name="radioButton" value="showC2V" id="checkboxC2V" checked />
+      <label for="showC2V" class="header_showC2V">
+        <button class="button">colors2vars</button>
+      </label>
+
+    </div>
+
+
+    </div>
+  </div>
+</div>
+
+<div class="layout layout_V2C ">
   <div class="subheading">
     All notations below are valid:
   </div>
   <pre><code>--main-bg-color: #f6fbfd; 
 $color-base-project: #0071b2;</code></pre>
 
-<textarea placeholder="Paste variables list" autofocus id='input'></textarea>
+  <textarea placeholder="Paste variables list" autofocus id="varsInputTextArea"></textarea>
 
-<div class="subheading">
-  Items rendering style
-</div>
+  <div class="subheading subheading_margintop">
+    Items rendering style
+  </div>
 
-<div class="render-style">
+  <div class="render-style">
+    <input type="radio" name="radioButton" value="circle" id="circle" checked />
+    <label for="circle" class="render-style_draw">
+      <img inline src="src/img/draw-circle.svg" />
+    </label>
 
-  <input type="radio" name="radioButton" value="circle" id='circle' checked/>
-  <label for='circle' class="render-style_draw">
-    <img inline src="src/img/draw-circle.svg">
-  </label>
-
-  <input type="radio" name="radioButton" value="rectangle" id='rectangle'/>
-  <label class="render-style_draw" for='rectangle'>
-    <img inline src="src/img/draw-rectangle.svg">
-  </label>
-
-</div>
+    <input type="radio" name="radioButton" value="rectangle" id="rectangle" />
+    <label class="render-style_draw" for="rectangle">
+      <img inline src="src/img/draw-rectangle.svg" />
+    </label>
+  </div>
 
 </div>
 
-<div class='layout-divider layout-divider_white'> 
-  <div class='layout'>
-    <div class='footer'>
-      <button class='button button_secondary' id='clear'>Clear data</button>
-      <div class='validation-wrapper'>
-        <span class='error'></span>
-        <button class='button button_primary' id="send">Draw</button>
-      </div>
-    </div>
+
+
+<div class="layout layout_C2V layout_is-visible">
+  <div class="subheading">
+    Here you can get color variables list from your designs in prefered style.
   </div>
 </div>
+
+
+
+
+
+<div class="layout-divider layout-divider_white">
+  <div class='layout'>
+  <div class="footer">
+    <button class="button button_secondary" id="clear">Clear data</button>
+    <div class="validation-wrapper">
+      <span class="error"></span>
+      <button class="button button_primary" id="send">Draw</button>
+    </div>
+  </div>
+  </div>
+</div>
+
+

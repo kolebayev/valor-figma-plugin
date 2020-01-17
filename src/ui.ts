@@ -1,41 +1,29 @@
-import './ui.scss'
+import './ui/ui.scss'
+import './ui/uiV2C'
+import './ui/uiC2V'
 
-const textbox = document.getElementById('input') as HTMLInputElement
-const circleCheck = document.getElementById('circle') as HTMLInputElement
-const rectangleCheck = document.getElementById('rectangle') as HTMLInputElement
-const textError = document.querySelector('.error')
+const checkShowV2C = document.getElementById('checkboxV2C') as HTMLInputElement
+const checkShowC2V = document.getElementById('checkboxC2V') as HTMLInputElement
 
-const clearBtnActions = () => {
-  textbox.value = ''
-  circleCheck.checked = true
-  rectangleCheck.checked = false
-  textError.innerHTML = '';
-  textbox.classList.remove('textareaError')
-}
 
-const focusAfterError = () => {
-  textbox.classList.remove('textareaError')
-  textError.innerHTML = '';
-}
+const btnShowV2C = document.querySelector('.header_showV2C') 
+const btnShowC2V = document.querySelector('.header_showC2V') 
 
-document.getElementById('clear').addEventListener('click', clearBtnActions)
-textbox.addEventListener('focus', focusAfterError)
+const layoutV2C = document.querySelector('.layout_V2C')
+const layoutC2V = document.querySelector('.layout_C2V')
 
-document.getElementById('send').onclick = () => {
-  const text = textbox.value
-  text ? 
-    parent.postMessage({ pluginMessage: 
-      { 
-        type: 'input', 
-        text,
-        renderChecked: circleCheck.checked === true ? 'circle' : 'rectangle'
-      } 
-    }, '*')  
-  :
-    textError.innerHTML = 'Paste data to textarea';
-    textbox.classList.add('textareaError')
-}
 
-onmessage = (e) => {
-  e.data.pluginMessage === 'draw_error' ? textError.innerHTML = 'Syntax error, check data' : '';
-}
+
+btnShowV2C.addEventListener('click', ()=>{
+  if (!checkShowV2C.checked) {
+    layoutV2C.classList.add('layout_is-visible')
+    layoutC2V.classList.remove('layout_is-visible')
+  }
+})
+
+btnShowC2V.addEventListener('click', ()=>{
+  if (!checkShowC2V.checked) {
+    layoutC2V.classList.add('layout_is-visible')
+    layoutV2C.classList.remove('layout_is-visible')
+  }
+})
