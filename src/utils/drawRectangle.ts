@@ -1,33 +1,32 @@
 import { hex2rgb, rgb2hsl } from './colorConverter'
 
-const drawCircle = (parsedString:string) => {
+const drawRectangle = (parsedString:string) => {
   try {
     const [variableName, variableHEX] = parsedString.split(":");
     // let h = variableHEX.length
     const blackColor = { r: 0.06, g: 0.06, b: 0.06 };
-    const ellipseSize = 60;
-    const textPosX: number = ellipseSize * 1.25
+    const rectangleSize = 100;
   
-    const ellipse = figma.createEllipse();
-    const ellipseColor = hex2rgb(variableHEX);
-    ellipse.y = 3;
-    ellipse.x = 0;
-    ellipse.name = variableName;
-    ellipse.resize(ellipseSize, ellipseSize);
-    ellipse.fills = [
+    const rectangle = figma.createRectangle();
+    const rectangleColor = hex2rgb(variableHEX);
+    rectangle.y = 0;
+    rectangle.x = 0;
+    rectangle.name = variableName;
+    rectangle.resize(rectangleSize, rectangleSize);
+    rectangle.fills = [
       {
         type: "SOLID",
         color: {
-          r: ellipseColor[0],
-          g: ellipseColor[1],
-          b: ellipseColor[2]
+          r: rectangleColor[0],
+          g: rectangleColor[1],
+          b: rectangleColor[2]
         }
       }
     ];
   
     const labelName = figma.createText();
-    labelName.x = textPosX;
-    labelName.y = 0;
+    labelName.x = 0;
+    labelName.y = 115;
     labelName.fontSize = 18;
     labelName.characters = variableName;
     labelName.fills = [
@@ -38,11 +37,11 @@ const drawCircle = (parsedString:string) => {
     ];
   
     const labelHSL = figma.createText();
-    labelHSL.x = textPosX;
-    labelHSL.y = 27;
+    labelHSL.x = 0;
+    labelHSL.y = 146;
     labelHSL.fontSize = 14;
     labelHSL.characters =
-      `hsl(` + rgb2hsl(ellipseColor[0], ellipseColor[1], ellipseColor[2]) + `)`;
+      `hsl(` + rgb2hsl(rectangleColor[0], rectangleColor[1], rectangleColor[2]) + `)`;
     labelHSL.fills = [
       {
         type: "SOLID",
@@ -51,8 +50,8 @@ const drawCircle = (parsedString:string) => {
     ];
   
     const labelHEX = figma.createText();
-    labelHEX.x = textPosX;
-    labelHEX.y = 47;
+    labelHEX.x = 0;
+    labelHEX.y = 170  ;
     labelHEX.fontSize = 14;
     labelHEX.characters = variableHEX;
     labelHEX.fills = [
@@ -63,16 +62,15 @@ const drawCircle = (parsedString:string) => {
     ];
   
     const nodesGroup = figma.group(
-      [ellipse, labelName, labelHSL, labelHEX],
+      [rectangle, labelName, labelHSL, labelHEX],
       figma.currentPage
     );
     nodesGroup.name = variableName;
   
     return nodesGroup;
   } catch (err) {
-    console.log(err)
     figma.ui.postMessage('draw_error')
   }
 };
 
-export default drawCircle;
+export default drawRectangle;

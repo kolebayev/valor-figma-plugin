@@ -1,5 +1,6 @@
 
 import drawCircle from './utils/drawCircle'
+import drawRectangle from './utils/drawRectangle'
 figma.showUI(__html__);
 figma.ui.resize(400 , 516)
 
@@ -32,12 +33,15 @@ figma.ui.onmessage = async msg => {
     for (let i = 0; i < clearStrings.length; i++) {
       for (let j = 0; j < clearStrings[i].length; j++) {
         let item;
-        msg.renderChecked === 'circle' ?
+        if (msg.renderChecked === 'circle') {
           item = drawCircle(clearStrings[i][j])
-        :
-          console.log('rect')
-        item.y = j * 100;
-        item.x = i * 300 
+          item.y = j * 100;
+          item.x = i * 300 
+        } else if (msg.renderChecked === 'rectangle') {
+          item = drawRectangle(clearStrings[i][j])
+          item.y = j * 250;
+          item.x = i * 250 
+        }
       }
     }
 

@@ -13,7 +13,13 @@ const clearBtnActions = () => {
   textbox.classList.remove('textareaError')
 }
 
+const focusAfterError = () => {
+  textbox.classList.remove('textareaError')
+  textError.innerHTML = '';
+}
+
 document.getElementById('clear').addEventListener('click', clearBtnActions)
+textbox.addEventListener('focus', focusAfterError)
 
 document.getElementById('send').onclick = () => {
   const text = textbox.value
@@ -29,11 +35,6 @@ document.getElementById('send').onclick = () => {
     textError.innerHTML = 'Paste data to textarea';
     textbox.classList.add('textareaError')
 }
-
-textbox.addEventListener('focus', () => {
-  textbox.classList.remove('textareaError')
-  textError.innerHTML = '';
-})
 
 onmessage = (e) => {
   e.data.pluginMessage === 'draw_error' ? textError.innerHTML = 'Syntax error, check data' : '';
