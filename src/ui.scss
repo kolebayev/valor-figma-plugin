@@ -23,15 +23,25 @@ body {
     border-top: 1px solid #E5E5E5;
 }
 
-.heading {
-    font-size: 20px;
-    font-weight: 500;
-    margin: 20px 0px 0px 4px;
-    text-align: center
-}
-
-.heading_arrow {
-    color: #18A0FB
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 4px;
+    &_logo {
+        width: 48px;
+        height: 34px;
+    }
+    &_text {
+        font-size: 20px;
+        font-weight: 500;
+        margin-left: 10px;
+        margin-top: -2px;
+    }
+    &_arrow {
+        color: #80C2ED
+    }
 }
 
 .subheading {
@@ -59,13 +69,12 @@ textarea {
     outline: none;
     transition: background 0.3s, border 0.3s;
     box-sizing: border-box;
-}
-
-textarea:focus {
-    background: #fff;
-    border: 2px solid #18A0FB;
-    box-sizing: border-box;
-    box-shadow: 0px 0px 8px rgba(24, 160, 251, 0.5);
+    &:focus {
+        background: #fff;
+        border: 2px solid #18A0FB;
+        box-sizing: border-box;
+        box-shadow: 0px 0px 8px rgba(24, 160, 251, 0.5);
+    }
 }
 
 .textareaError {
@@ -79,25 +88,26 @@ textarea:focus {
     margin: 13px 0 20px 0;
     display: flex;
     justify-content: space-between;
+    &_draw {
+        width: 170px;
+        height: 100px;
+        display: inline-block;
+        border-radius: 5px;
+        cursor: pointer
+    }
 }
 
-.draw {
-    width: 170px;
-    height: 100px;
-    display: inline-block;
-    border-radius: 5px;
-    cursor: pointer
-}
+
 
 input[type="radio"] {
     display: none;
 }
 
-input[type="radio"] + .draw {
+input[type="radio"] + .render-style_draw {
     fill: #E5E5E5;
 }
 
-input[type="radio"]:checked + .draw {
+input[type="radio"]:checked + .render-style_draw {
     fill: #66AFE1;
     box-shadow: 0px 0px 8px rgba(24, 160, 251, 0.5);
 }
@@ -132,25 +142,21 @@ input[type="radio"]:checked + .draw {
     line-height: 13px;
     height: 32px;
     padding: 0 12px;
-}
-
-.button-primary {
-    background-color: #18A0FB;
-    padding: 0 24px;
-    color: #fff
-}
-
-.button-primary:hover {
-    background-color: #4BB5FC;
-}
-
-.button-secondary {
-    background-color: #D9D9D9;
-    color: #000
-}
-
-.button-secondary:hover {
-    background-color: #E9E9E9;
+    &_primary {
+        background-color: #18A0FB;
+        padding: 0 24px;
+        color: #fff;
+        &:hover {
+            background-color: #4BB5FC;
+        }
+    }
+    &_secondary {
+        background-color: #D9D9D9;
+        color: #000;
+        &:hover {
+            background-color: #E9E9E9;
+        }
+    }
 }
 
 .error {
@@ -158,5 +164,4 @@ input[type="radio"]:checked + .draw {
     line-height: 13px;
     color: red;
     margin-right: 10px;
-    /* display: none */
 }
