@@ -8,28 +8,25 @@
 
 
       <input type="radio" name="radioButton" value="showV2C" id="checkboxV2C" />
-      <label  for="showV2C" class="header_showV2C">
-        <button class="button">vars2colors</button>
+      <label for="showV2C" class="header_showV2C">
+        <button class="button">{ } → ●</button>
       </label>
 
       <input type="radio" name="radioButton" value="showC2V" id="checkboxC2V" checked />
       <label for="showC2V" class="header_showC2V">
-        <button class="button">colors2vars</button>
+        <button class="button">● → { }</button>
       </label>
-
-    </div>
-
 
     </div>
   </div>
 </div>
+<!-- </div> -->
 
 <div class="layout layout_V2C ">
   <div class="subheading">
     All notations below are valid:
   </div>
-  <pre><code>--main-bg-color: #f6fbfd; 
-$color-base-project: #0071b2;</code></pre>
+  <pre><code>--main-bg-color: #f6fbfd;<br>$color-base-project: #0071b2;</code></pre>
 
   <textarea placeholder="Paste variables list" autofocus id="varsInputTextArea"></textarea>
 
@@ -57,6 +54,12 @@ $color-base-project: #0071b2;</code></pre>
   <div class="subheading">
     Here you can get color variables list from your designs in prefered style.
   </div>
+  <div>
+    <button class="button button_primary" id="getVars">GET VARS</button>
+  </div>
+  <!-- <textarea placeholder="Paste variables list" autofocus id="varsInputTextArea"></textarea> -->
+  <!-- --main-bg-color: #f6fbfd;<br>$color-base-project: #0071b2; -->
+  <pre class='scrollable'><code id='deskForVars'></code></pre>
 </div>
 
 
@@ -65,14 +68,12 @@ $color-base-project: #0071b2;</code></pre>
 
 <div class="layout-divider layout-divider_white">
   <div class='layout'>
-  <div class="footer">
-    <button class="button button_secondary" id="clear">Clear data</button>
-    <div class="validation-wrapper">
-      <span class="error"></span>
-      <button class="button button_primary" id="send">Draw</button>
+    <div class="footer">
+      <button class="button button_secondary" id="clear">Clear data</button>
+      <div class="validation-wrapper">
+        <span class="error"></span>
+        <button class="button button_primary" id="send">Draw</button>
+      </div>
     </div>
   </div>
-  </div>
 </div>
-
-

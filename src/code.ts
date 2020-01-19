@@ -1,4 +1,3 @@
-
 import drawCircle from './utils/drawCircle'
 import drawRectangle from './utils/drawRectangle'
 figma.showUI(__html__);
@@ -48,6 +47,26 @@ figma.ui.onmessage = async msg => {
     figma.currentPage.selection = nodes;
     figma.viewport.scrollAndZoomIntoView(nodes);
   }
+
+  // figma.closePlugin();
+
+  if (msg.type === 'getVariables') {
+    let items = figma.currentPage.selection
+    if (items.length === 0) {
+      figma.ui.postMessage({status: 'selectionEmpty'})
+    } else {
+      let list = []
+      for (const node of items) {
+        if (node.type === "ELLIPSE" || node.type === "RECTANGLE" ) {
+          list.push([node.name, node.fills[0].color])
+          // console.log(node.type, node.name)
+          // console.log('color', node.fills[0].color)
+        }
+      }
+
+      figma.ui.postMessage({ status: 'selectionFilled', data: list })
+    }
+  }
   // if (msg.type === "call") {
   //     function traverse(o) {
   //         for (let i = 0; i < o.length; i++) {
@@ -64,5 +83,6 @@ figma.ui.onmessage = async msg => {
   //     }
   //     traverse(figma.currentPage.children);
   // }
-  figma.closePlugin();
+
+  // figma.closePlugin();
 };

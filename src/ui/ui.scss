@@ -19,6 +19,7 @@ html {
 
 body {
     background: $color-bg-primary;
+    // background: #fff;
     color: $color-typo-primary;
     margin: 0px;
 }
@@ -150,7 +151,7 @@ button:focus {
     max-width: 100%;
     text-decoration: none;
     border-radius: 4px;
-    transition: background .15s ease,box-shadow .15s ease,color .15s ease,fill .15s ease;
+    transition: background .15s ease, box-shadow .15s ease, color .15s ease, fill .15s ease;
     cursor: pointer;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -166,7 +167,6 @@ button:focus {
         color: #fff;
         &:hover {
             background-color: lighten($color-brand-primary, 10%)
-            // #4BB5FC;
         }
     }
     &_secondary {
@@ -184,4 +184,10 @@ button:focus {
     line-height: 13px;
     color: $color-error;
     margin-right: 10px;
+}
+
+.scrollable {
+    height: 200px;
+    max-height: 200px;
+    overflow:auto    
 }
