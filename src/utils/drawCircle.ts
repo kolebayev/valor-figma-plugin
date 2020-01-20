@@ -1,7 +1,7 @@
 import { hex2rgb, rgb2hsl } from './colorConverter'
 
 const drawCircle = (parsedString:string) => {
-  try {
+  // try {
     const [variableName, variableHEX] = parsedString.split(":");
     // let h = variableHEX.length
     const blackColor = { r: 0.06, g: 0.06, b: 0.06 };
@@ -69,10 +69,11 @@ const drawCircle = (parsedString:string) => {
     nodesGroup.name = variableName;
   
     return nodesGroup;
-  } catch (err) {
-    console.log(err)
-    figma.ui.postMessage('draw_error')
-  }
+  // } catch (err) {
+  //   async () => {
+  //     await figma.ui.postMessage({error: 'draw_error'})
+  //   }
+  // }
 };
 
 export default drawCircle;

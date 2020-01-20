@@ -72,10 +72,8 @@ export const rgb2hsl = (r: number, g: number, b: number) => {
 };
 
 export const rgb2hex = (r:number, g:number, b:number) => '#' + [r, g, b].map(x => {
-  // console.log(x)
   const hex = x.toString(16)
   return hex.length === 1 ? '0' + hex : hex
 }).join('')
-// console.log(rgbToHex(0, 51, 255)); // '#0033ff'
 
 export default { hex2rgb, rgb2hsl, rgb2hex }

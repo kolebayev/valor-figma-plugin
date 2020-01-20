@@ -21,7 +21,13 @@ varsInputTextArea.addEventListener('focus', textAreaFocusAfterError)
 
 document.getElementById('send').onclick = () => {
   const text = varsInputTextArea.value
-  text ? 
+  if (text.length === 0) {
+    textError.innerHTML = 'Paste data to textarea';
+    varsInputTextArea.classList.add('textareaError')
+  } else if (!text.includes(':') || !text.includes(';')) {
+    textError.innerHTML = 'Syntax error, check data';
+    varsInputTextArea.classList.add('textareaError')
+  } else {
     parent.postMessage({ pluginMessage: 
       { 
         type: 'input', 
@@ -29,11 +35,12 @@ document.getElementById('send').onclick = () => {
         renderChecked: circleCheck.checked === true ? 'circle' : 'rectangle'
       } 
     }, '*')  
-  :
-    textError.innerHTML = 'Paste data to textarea';
-    varsInputTextArea.classList.add('textareaError')
+  }
 }
 
-onmessage = (e) => {
-  e.data.pluginMessage === 'draw_error' ? textError.innerHTML = 'Syntax error, check data' : '';
-}
+// onmessage = (e) => {
+  // if (e.data.pluginMessage.error === 'draw_error') {
+  //   console.log('DRAW ERROR')
+  //   textError.innerHTML = 'Syntax error, check data'
+  // }
+// }

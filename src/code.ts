@@ -1,7 +1,7 @@
 import drawCircle from './utils/drawCircle'
 import drawRectangle from './utils/drawRectangle'
 figma.showUI(__html__);
-figma.ui.resize(400 , 516)
+figma.ui.resize(400 , 506)
 
 figma.ui.onmessage = async msg => {
   await figma.loadFontAsync({ family: "Roboto", style: "Regular" });
@@ -34,8 +34,8 @@ figma.ui.onmessage = async msg => {
         let item;
         if (msg.renderChecked === 'circle') {
           item = drawCircle(clearStrings[i][j])
-          item.y = j * 100;
-          item.x = i * 300 
+            item.y = j * 100;
+            item.x = i * 300
         } else if (msg.renderChecked === 'rectangle') {
           item = drawRectangle(clearStrings[i][j])
           item.y = j * 250;
@@ -47,8 +47,6 @@ figma.ui.onmessage = async msg => {
     figma.currentPage.selection = nodes;
     figma.viewport.scrollAndZoomIntoView(nodes);
   }
-
-  // figma.closePlugin();
 
   if (msg.type === 'getVariables') {
     let items = figma.currentPage.selection
@@ -67,22 +65,6 @@ figma.ui.onmessage = async msg => {
       figma.ui.postMessage({ status: 'selectionFilled', data: list })
     }
   }
-  // if (msg.type === "call") {
-  //     function traverse(o) {
-  //         for (let i = 0; i < o.length; i++) {
-  //             if (o[i].type === "ELLIPSE" || o[i].type === "RECTANGLE") {
-  //                 if (o[i].name === "TEST") {
-  //                     // color value is read only
-  //                     o[i].fills[0].color = { r: 0, g: 0, b: 0 };
-  //                 }
-  //             }
-  //             else if (o[i].type === "GROUP" || o[i].type === "FRAME") {
-  //                 traverse(o[i].children);
-  //             }
-  //         }
-  //     }
-  //     traverse(figma.currentPage.children);
-  // }
 
-  // figma.closePlugin();
+  figma.closePlugin();
 };

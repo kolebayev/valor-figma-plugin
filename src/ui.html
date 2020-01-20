@@ -1,39 +1,61 @@
-<div class="layout">
-  <div class="header">
-    <div class="header_logo">
-      <img inline src="src/img/logo.svg" />
-    </div>
-    <div class="header_mode-switcher">
+<div class="layout-divider_bottom">
+  <div class="layout">
+    <div class="header">
+      <div class="header_logo">
+        <img inline src="src/img/logo.svg" />
+      </div>
+      <div class="header_mode-switcher">
+        <input
+          type="radio"
+          name="radioButton"
+          value="showV2C"
+          id="checkboxV2C"
+        />
+        <label for="showV2C" class="header_showV2C tabs">
+          <div class="">Draw components</div>
+        </label>
 
-
-
-      <input type="radio" name="radioButton" value="showV2C" id="checkboxV2C" />
-      <label for="showV2C" class="header_showV2C">
-        <button class="button">{ } → ●</button>
-      </label>
-
-      <input type="radio" name="radioButton" value="showC2V" id="checkboxC2V" checked />
-      <label for="showC2V" class="header_showC2V">
-        <button class="button">● → { }</button>
-      </label>
-
+        <input
+          type="radio"
+          name="radioButton"
+          value="showC2V"
+          id="checkboxC2V"
+          checked
+        />
+        <label for="showC2V" class="header_showC2V tabs tabs_active">
+          <div class="">Generate variables</div>
+        </label>
+      </div>
     </div>
   </div>
 </div>
-<!-- </div> -->
 
-<div class='layout_V2C'>
+
+<div class="layout_V2C">
   <div class="layout">
-    <div class="subheading">
-      All notations below are valid:
+    <div class="subheading subheading_margintop">
+      Color variables list
+    </div>
+    <div class="paragraph">
+      Every item of list must have <b>:</b> as divider and <b>;</b> as the end of string. Example:
     </div>
     <pre><code>--main-bg-color: #f6fbfd;<br>$color-base-project: #0071b2;</code></pre>
-    <textarea placeholder="Paste variables list" autofocus id="varsInputTextArea"></textarea>
+    <textarea
+      placeholder="Paste variables list"
+      autofocus
+      id="varsInputTextArea"
+    ></textarea>
     <div class="subheading subheading_margintop">
       Items rendering style
     </div>
     <div class="render-style">
-      <input type="radio" name="radioButton" value="circle" id="circle" checked />
+      <input
+        type="radio"
+        name="radioButton"
+        value="circle"
+        id="circle"
+        checked
+      />
       <label for="circle" class="render-style_draw">
         <img inline src="src/img/draw-circle.svg" />
       </label>
@@ -43,8 +65,8 @@
       </label>
     </div>
   </div>
-  <div class="layout-divider layout-divider_white">
-    <div class='layout'>
+  <div class="layout-divider layout-divider_top">
+    <div class="layout">
       <div class="footer">
         <button class="button button_secondary" id="clear">Clear</button>
         <div class="validation-wrapper">
@@ -56,30 +78,40 @@
   </div>
 </div>
 
-<div class='layout_C2V layout_is-visible'>
 
+<div class="layout_C2V layout_is-visible">
+  <div class='wrapper'>
   <div class="layout">
-    <div class="subheading">
-      Here you can get color variables list from your designs in prefered style.
+    <div class="subheading subheading_margintop">
+      Get color variables list from designs
     </div>
 
+    <div class="paragraph">
+      Select shapes on a canvas to generate variables<br>
+      - Rectangle or ellipsis are allowed<br>
+      - Shapes must be ungrouped<br>
+      - Shape's name vill be passed to variable name
+    </div>
 
-    <pre class='scrollable'><code id='deskForVars'></code></pre>
+    <div id="copyVars" style="display:none">COPY</div>
+    <pre class="scrollable"><code id='deskForVars'></code></pre>
   </div>
 
-  <div class="layout-divider layout-divider_white">
-    <div class='layout'>
+  <div class="layout-divider layout-divider_top">
+    <div class="layout">
       <div class="footer">
         <div>
-          <button class="button button_secondary" id="">Clear</button>
+          <button class="button button_secondary" id="clearVars">Clear</button>
           <!-- <button class="button button_secondary" id="copyVars">Copy</button> -->
         </div>
         <div class="validation-wrapper">
           <span class="error error_getting"></span>
-          <button class="button button_primary" id="getVars">Get variables</button>
+          <button class="button button_primary" id="getVars">
+            Get variables
+          </button>
         </div>
       </div>
     </div>
   </div>
-
+</div>
 </div>
