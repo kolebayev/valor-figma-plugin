@@ -66,5 +66,5 @@ figma.ui.onmessage = async msg => {
     }
   }
 
-  figma.closePlugin();
+  // figma.closePlugin();
 };

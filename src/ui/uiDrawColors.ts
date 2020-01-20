@@ -24,6 +24,10 @@ document.getElementById('send').onclick = () => {
   if (text.length === 0) {
     textError.innerHTML = 'Paste data to textarea';
     varsInputTextArea.classList.add('textareaError')
+    setTimeout(()=>{
+      textError.innerHTML = '';
+      varsInputTextArea.classList.remove('textareaError')
+    }, 1500)
   } else if (!text.includes(':') || !text.includes(';')) {
     textError.innerHTML = 'Syntax error, check data';
     varsInputTextArea.classList.add('textareaError')
