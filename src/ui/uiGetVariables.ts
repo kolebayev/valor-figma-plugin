@@ -35,6 +35,9 @@ onmessage = (e) => {
     if (e.data.pluginMessage.status === 'selectionEmpty') {
         textError.innerHTML = 'Select shapes on canvas'
         setTimeout(() => textError.innerHTML = '', 1500);
+    } else if(e.data.pluginMessage.status === 'selectionPartiallyWrong') {
+        textError.innerHTML = 'Selection has incorrect items'
+        setTimeout(() => textError.innerHTML = '', 1500);
     } else if (e.data.pluginMessage.status === 'selectionFilled') {
         let varsString = ''
         e.data.pluginMessage.data.forEach(el => {
