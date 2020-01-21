@@ -60,7 +60,7 @@ body {
   align-items: center;
   margin: 10px 0px;
   &_logo {
-    width: 20px;
+    width: 11px;
     height: 14px;
   }
   &_mode-switcher {
@@ -76,6 +76,7 @@ body {
     font-size: 11px;
     line-height: 16px;
     letter-spacing: 0.005em;
+    padding-left: 10px;
     &:hover {
       color: $color-typo-primary;
     }
@@ -91,16 +92,28 @@ body {
 }
 
 .header_showC2V {
-  padding-left: 10px;
+  // padding-left: 10px;
 }
 
 .subheading {
-  font-weight: 600;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  &_text {
+    font-weight: 600;
   font-size: 11px;
   line-height: 16px;
   letter-spacing: 0.005em;
+  }
   &_margintop {
     margin-top: 16px;
+  }
+  &_icon {
+    width: 12px;
+    height: 12px;
+    &_marginleft {
+      margin-left: 4px;
+    }
   }
 }
 
@@ -246,4 +259,46 @@ button:focus {
 .scrollable {
   height: 263px;
   overflow: auto;
+}
+
+.tooltip::before,
+.tooltip::after {
+	display: block;
+	position: absolute;
+	margin-bottom: 10px;
+	left: 50%;
+	visibility: hidden;
+	opacity: 0;
+	transition: all .25s ease-in-out;
+}
+
+.tooltip::before {
+	content: attr(data-title); 
+	bottom: 30px;
+	margin-left: -100px;
+	width: 200px;
+	padding: 10px;
+	background: rgba(0,0,0,.85);
+	text-align: center;
+	font-size: .9em;
+	font-weight: normal;
+	color: #fff;
+	border-radius: 5px;
+	line-height: 16px;
+}
+
+.tooltip:hover::before,
+.tooltip:hover::after {
+	opacity: 1;
+	visibility: visible;
+	margin-bottom: 0;
+}
+
+.tooltip::after {
+	content: '';
+	border-top: 10px solid rgba(0,0,0,.85);
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	margin-left: -10px;
+	bottom: 20px
 }

@@ -32,21 +32,27 @@
 
 <div class="layout_V2C">
   <div class="layout">
-    <div class="subheading subheading_margintop">
-      Color variables list
+    <div class='subheading subheading_margintop'>
+    <div class="subheading_text">
+      Prepare variables list
     </div>
+    <div data-title="My tooltip text goes here" class='subheading_icon subheading_icon_marginleft tooltip'>
+      <img inline src="src/img/icon-question.svg" />
+    </div>
+    </div>
+    
     <div class="paragraph">
-      Every item of list must have <b>:</b> as divider and <b>;</b> as the end
-      of string. Example:
+      Every item of list must have <b>:</b> as key/value divider and <b>;</b> as the end
+      of string. PostCSS simple vars and css-variables notations are valid. Example:
     </div>
-    <pre><code>--main-bg-color: #f6fbfd;<br>$color-base-project: #0071b2;</code></pre>
+    <pre><code>color-brand-dark: #000;<br>--main-bg-color: #f6fbfd;<br>$color-base-project: #0071b2;</code></pre>
     <textarea
       placeholder="Paste variables list"
       autofocus
       id="varsInputTextArea"
     ></textarea>
-    <div class="subheading subheading_margintop">
-      Items rendering style
+    <div class="subheading subheading_text subheading_margintop">
+      Select rendering style
     </div>
     <div class="render-style">
       <input
@@ -81,7 +87,7 @@
 <div class="layout_C2V layout_is-visible">
   <div class="wrapper">
     <div class="layout">
-      <div class="subheading subheading_margintop">
+      <div class="subheading subheading_text subheading_margintop">
         Get color variables list from designs
       </div>
 

@@ -16,7 +16,8 @@ figma.ui.onmessage = async msg => {
       return el.replace(NEWLINE, "")
         .replace(COMMENTS, "")
         .replace("$", "")
-        .replace(SPACE, "");
+        .replace(SPACE, "")
+        .replace('--', '');
     });
 
     const variableStrings = inputStrings.filter(function (el) {
@@ -57,8 +58,8 @@ figma.ui.onmessage = async msg => {
       for (const node of items) {
         if (node.type === "ELLIPSE" || node.type === "RECTANGLE" ) {
           list.push([node.name, node.fills[0].color])
-          // console.log(node.type, node.name)
-          // console.log('color', node.fills[0].color)
+        } else {
+          figma.ui.postMessage({ status: 'selectionPartiallyWrong', data: list })
         }
       }
 
