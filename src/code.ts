@@ -1,7 +1,7 @@
 import drawCircle from './utils/drawCircle'
 import drawRectangle from './utils/drawRectangle'
 figma.showUI(__html__);
-figma.ui.resize(400 , 506)
+figma.ui.resize(400 , 390)
 
 figma.ui.onmessage = async msg => {
   await figma.loadFontAsync({ family: "Roboto", style: "Regular" });

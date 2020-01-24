@@ -2,6 +2,7 @@ const varsInputTextArea = document.getElementById('varsInputTextArea') as HTMLIn
 const circleCheck = document.getElementById('circle') as HTMLInputElement
 const rectangleCheck = document.getElementById('rectangle') as HTMLInputElement
 const textError = document.querySelector('.error')
+const useSampleData = document.getElementById('use-sample-data')
 
 const clearBtnActions = () => {
   varsInputTextArea.value = ''
@@ -41,6 +42,10 @@ document.getElementById('send').onclick = () => {
     }, '*')  
   }
 }
+
+useSampleData.addEventListener('click', ()=> {
+  varsInputTextArea.value = 'color-brand-dark: #000;\n--main-bg-color: #f6fbfd;\n$color-base-project:#0071b2;'
+})
 
 // onmessage = (e) => {
   // if (e.data.pluginMessage.error === 'draw_error') {

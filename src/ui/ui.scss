@@ -4,7 +4,6 @@
 $color-bg-primary: #f7f7f7;
 $color-typo-primary: #343434;
 $color-border: #e5e5e5;
-// $color-brand-soft: #80C2ED;
 $color-brand-primary: #18a0fb;
 $color-error: #f92f2f;
 
@@ -20,7 +19,6 @@ html {
 
 body {
   background: $color-bg-primary;
-  // background: #fff;
   color: $color-typo-primary;
   margin: 0px;
 }
@@ -33,10 +31,9 @@ body {
   &_C2V {
     display: none;
     .wrapper {
-        height: calc(489px - 21px);
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
   }
   &_is-visible {
@@ -97,16 +94,31 @@ body {
 
 .subheading {
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  justify-content: space-between;
+  &_wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
   &_text {
     font-weight: 600;
-  font-size: 11px;
-  line-height: 16px;
-  letter-spacing: 0.005em;
+    font-size: 11px;
+    line-height: 16px;
+    letter-spacing: 0.005em;
+  }
+  &_link {
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 16px;
+    letter-spacing: 0.005em;
+    color: $color-brand-primary;
+    cursor: pointer;
   }
   &_margintop {
     margin-top: 16px;
+  }
+  &_marginbottom {
+    margin-bottom: 10px;
   }
   &_icon {
     width: 12px;
@@ -115,12 +127,6 @@ body {
       margin-left: 4px;
     }
   }
-}
-
-.paragraph {
-  font-size: 11px;
-  line-height: 16px;
-  margin-top: 13px;
 }
 
 pre {
@@ -137,7 +143,7 @@ pre {
 #copyVars {
   position: absolute;
   right: 23px;
-  top: 162px;
+  top: 87px;
   background-color: #ccc;
   padding: 5px 10px 5px 10px;
   border-radius: 5px;
@@ -180,7 +186,7 @@ textarea {
 
 .render-style {
   width: 100%;
-  margin: 13px 0 20px 0;
+  margin: 0 0 20px 0;
   display: flex;
   justify-content: space-between;
   &_draw {
@@ -257,48 +263,48 @@ button:focus {
 }
 
 .scrollable {
-  height: 263px;
+  height: 222px;
   overflow: auto;
 }
 
-.tooltip::before,
-.tooltip::after {
-	display: block;
-	position: absolute;
-	margin-bottom: 10px;
-	left: 50%;
-	visibility: hidden;
-	opacity: 0;
-	transition: all .25s ease-in-out;
+.tooltip {
+  position: relative;
+  display: inline;
+  span {
+    position: absolute;
+    padding: 12px;
+    font-size: 11px;
+    line-height: 16px;
+    width: 200px;
+    color: #ffffff;
+    background: #000000;
+    height: auto;
+    text-align: left;
+    visibility: hidden;
+    border-radius: 6px;
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      margin-left: -8px;
+      width: 0;
+      height: 0;
+      border-bottom: 8px solid #000000;
+      border-right: 8px solid transparent;
+      border-left: 8px solid transparent;
+    }
+  }
 }
 
-.tooltip::before {
-	content: attr(data-title); 
-	bottom: 30px;
-	margin-left: -100px;
-	width: 200px;
-	padding: 10px;
-	background: rgba(0,0,0,.85);
-	text-align: center;
-	font-size: .9em;
-	font-weight: normal;
-	color: #fff;
-	border-radius: 5px;
-	line-height: 16px;
-}
-
-.tooltip:hover::before,
-.tooltip:hover::after {
-	opacity: 1;
-	visibility: visible;
-	margin-bottom: 0;
-}
-
-.tooltip::after {
-	content: '';
-	border-top: 10px solid rgba(0,0,0,.85);
-	border-left: 10px solid transparent;
-	border-right: 10px solid transparent;
-	margin-left: -10px;
-	bottom: 20px
+div {
+  &:hover.tooltip {
+    span {
+      visibility: visible;
+      opacity: 0.8;
+      top: 25px;
+      left: -106px;
+      z-index: 999;
+    }
+  }
 }
