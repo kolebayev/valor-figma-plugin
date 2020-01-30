@@ -1,3 +1,5 @@
+![VALOR](github_promo.png)
+
 ## Bridge the gap between designers and developers  
 Visualise existing or new color palettes in your design system or Generate lists of variables from color palettes  
 
