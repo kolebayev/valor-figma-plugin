@@ -1,0 +1,162 @@
+@import url("https://rsms.me/inter/inter.css");
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap");
+@import "./colors.scss";
+@import "./pre.scss";
+@import "./textarea.scss";
+@import "./input_renderStyle.scss";
+@import "./button.scss";
+@import "./tooltip.scss";
+
+html {
+  font-family: "Inter", sans-serif;
+}
+
+@supports (font-variation-settings: normal) {
+  html {
+    font-family: "Inter var", sans-serif;
+  }
+}
+
+body {
+  background: $color-bg-primary;
+  color: $color-typo-primary;
+  margin: 0px;
+}
+
+.layout {
+  margin: 0 16px;
+  &_V2C {
+    display: none;
+  }
+  &_C2V {
+    display: none;
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  }
+  &_is-visible {
+    display: block;
+  }
+}
+
+.layout-divider {
+  background-color: #fff;
+  &_top {
+    border-top: 1px solid $color-border;
+  }
+  &_bottom {
+    border-bottom: 1px solid $color-border;
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 10px 0px;
+  &_logo {
+    width: 11px;
+    height: 14px;
+  }
+  &_mode-switcher {
+    margin-left: 10px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .tabs {
+    color: #b3b3b3;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 16px;
+    letter-spacing: 0.005em;
+    padding-left: 10px;
+    &:hover {
+      color: $color-typo-primary;
+    }
+    &_active {
+      font-weight: 600;
+      color: $color-typo-primary;
+    }
+  }
+}
+
+.header_showV2C {
+  width: 100px;
+}
+
+.header_showC2V {
+  // padding-left: 10px;
+}
+
+.subheading {
+  display: flex;
+  justify-content: space-between;
+  &_wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  &_text {
+    font-weight: 600;
+    font-size: 11px;
+    line-height: 16px;
+    letter-spacing: 0.005em;
+  }
+  &_link {
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 16px;
+    letter-spacing: 0.005em;
+    color: $color-brand-primary;
+    cursor: pointer;
+  }
+  &_margintop {
+    margin-top: 16px;
+  }
+  &_marginbottom {
+    margin-bottom: 10px;
+  }
+  &_icon {
+    width: 12px;
+    height: 12px;
+    &_marginleft {
+      margin-left: 4px;
+    }
+  }
+}
+
+.render-style {
+  width: 100%;
+  margin: 0 0 20px 0;
+  display: flex;
+  justify-content: space-between;
+  &_draw {
+    width: 170px;
+    height: 100px;
+    display: inline-block;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+}
+
+.error {
+  font-size: 11px;
+  line-height: 11px;
+  color: $color-error;
+  margin-right: 10px;
+}
+
+.scrollable {
+  height: 214px;
+  overflow: auto;
+}

@@ -1,0 +1,39 @@
+@import './colors.scss';
+
+button:focus {
+  outline: 0;
+}
+
+.button {
+  display: inline-block;
+  flex-shrink: 0;
+  height: 30px;
+  margin: 1px 0 1px 0;
+  padding: 5px 16px 5px 16px;
+  text-decoration: none;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  outline: none;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 16px;
+  letter-spacing: 0.01em;
+  transition: background 0.15s ease, box-shadow 0.15s ease, color 0.15s ease,
+    fill 0.15s ease;
+  cursor: pointer;
+  &_primary {
+    background-color: $color-brand-primary;
+    color: #fff;
+    &:hover {
+      background-color: lighten($color-brand-primary, 10%);
+    }
+  }
+  &_secondary {
+    background-color: #fff;
+    border: 1px solid black;
+    color: #000;
+    &:hover {
+      background-color: darken(#fff, 3%);
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import './ui/ui.scss'
+import './style/ui.scss'
 import './ui/uiDrawColors'
 import './ui/uiGetVariables'
 import { rgb2hex } from './utils/colorConverter'

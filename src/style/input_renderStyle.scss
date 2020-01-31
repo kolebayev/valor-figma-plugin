@@ -1,0 +1,14 @@
+@import './colors.scss';
+
+input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"] + .render-style_draw {
+  fill: $color-border;
+}
+
+input[type="radio"]:checked + .render-style_draw {
+  fill: #66afe1;
+  box-shadow: 0px 0px 8px rgba($color-brand-primary, 0.5);
+}

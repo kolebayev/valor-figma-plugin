@@ -1,0 +1,25 @@
+pre {
+  background: #ebebeb;
+  padding: 14px;
+  border-radius: 5px;
+  margin: 8px 0px 20px 0px;
+  & > code {
+    font-family: "Roboto Mono", monospace;
+    font-size: 11px;
+  }
+}
+
+#copyVars {
+  position: absolute;
+  right: 23px;
+  top: 87px;
+  background-color: #ccc;
+  padding: 5px 10px 5px 10px;
+  border-radius: 5px;
+  font-size: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  &:hover {
+    background-color: lighten(#ccc, 5%);
+  }
+}
