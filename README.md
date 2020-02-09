@@ -1,7 +1,8 @@
 ![VALOR](github_promo.png)
 
 ## Bridge the gap between designers and developers  
-Visualise existing or new color palettes in your design system or Generate lists of variables from color palettes  
+Visualise existing or new color palettes in your design system or Generate lists of variables from color palettes 
+[Page in Figma community](https://www.figma.com/c/plugin/798588768596541799/Valor)  
 
 ### Draw Components  
 Import lists of color variables to draw components on canvas  
