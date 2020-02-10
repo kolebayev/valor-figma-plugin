@@ -20,7 +20,7 @@ figma.ui.onmessage = async msg => {
         .replace('--', '');
     });
 
-    const variableStrings = inputStrings.filter(function (el) {
+    const variableStrings = inputStrings.filter(el => {
       return el != '';
     });
     
