@@ -9,7 +9,7 @@ const drawRectangle = (parsedString:string) => {
     const rectangle = figma.createRectangle();
 
     let rectangleColor;
-    console.log('varHex', variableHEX)
+    // console.log('varHex', variableHEX)
     // let opacity;
     if (variableHEX.includes('#') && !variableHEX.includes('rgb')) {
       // work with HEX color
