@@ -1,14 +1,15 @@
+import { processInputValue } from './processInputValue';
 import { hex2rgb, rgb2hsl } from './colorConverter'
 
 const drawRectangle = (parsedString:string) => {
-  try {
-    const [variableName, variableHEX] = parsedString.split(":");
-    // let h = variableHEX.length
+
+    const [variableName, variableValue] = parsedString.split(":");
     const blackColor = { r: 0.06, g: 0.06, b: 0.06 };
     const rectangleSize = 100;
   
     const rectangle = figma.createRectangle();
-    const rectangleColor = hex2rgb(variableHEX);
+
+    let rectangleColor = processInputValue(variableValue, {})
     rectangle.y = 0;
     rectangle.x = 0;
     rectangle.name = variableName;
@@ -20,7 +21,8 @@ const drawRectangle = (parsedString:string) => {
           r: rectangleColor[0],
           g: rectangleColor[1],
           b: rectangleColor[2]
-        }
+        },
+        opacity: rectangleColor[3] ? rectangleColor[3] : 1
       }
     ];
   
@@ -36,13 +38,16 @@ const drawRectangle = (parsedString:string) => {
       }
     ];
   
-    const labelHSL = figma.createText();
-    labelHSL.x = 0;
-    labelHSL.y = 146;
-    labelHSL.fontSize = 14;
-    labelHSL.characters =
-      `hsl(` + rgb2hsl(rectangleColor[0], rectangleColor[1], rectangleColor[2]) + `)`;
-    labelHSL.fills = [
+    const labelHSLA = figma.createText();
+    labelHSLA.x = 0;
+    labelHSLA.y = 146;
+    labelHSLA.fontSize = 14;
+    labelHSLA.characters =
+      `hsla(` +
+      `${rgb2hsl(rectangleColor[0], rectangleColor[1], rectangleColor[2]).map((el, index) => index > 0 ? ' ' + el : el)}` + 
+      `, ${rectangleColor[3] ? rectangleColor[3] : 1}` + 
+      `)`;
+    labelHSLA.fills = [
       {
         type: "SOLID",
         color: blackColor
@@ -53,7 +58,7 @@ const drawRectangle = (parsedString:string) => {
     labelHEX.x = 0;
     labelHEX.y = 170  ;
     labelHEX.fontSize = 14;
-    labelHEX.characters = variableHEX;
+    labelHEX.characters = variableValue;
     labelHEX.fills = [
       {
         type: "SOLID",
@@ -62,15 +67,12 @@ const drawRectangle = (parsedString:string) => {
     ];
   
     const nodesGroup = figma.group(
-      [rectangle, labelName, labelHSL, labelHEX],
+      [rectangle, labelName, labelHSLA, labelHEX],
       figma.currentPage
     );
     nodesGroup.name = variableName;
   
     return nodesGroup;
-  } catch (err) {
-    figma.ui.postMessage('draw_error')
-  }
 };
 
 export default drawRectangle;

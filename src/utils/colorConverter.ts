@@ -1,4 +1,4 @@
-export const hex2rgb = (hex) => {
+export const hex2rgb = hex => {
   const match = hex.toString(16).match(/[a-f0-9]{6}|[a-f0-9]{3}/i);
   if (!match) {
     return [0, 0, 0];
@@ -70,9 +70,18 @@ export const rgb2hsl = (r: number, g: number, b: number) => {
   ];
 };
 
-export const rgb2hex = (r:number, g:number, b:number) => '#' + [r, g, b].map(x => {
-  const hex = x.toString(16)
-  return hex.length === 1 ? '0' + hex : hex
-}).join('')
+export const rgb2hex = (r: number, g: number, b: number) =>
+  "#" + [r, g, b].map(x => {
+      const hex = x.toString(16);
+      return hex.length === 1 ? "0" + hex : hex;
+  }).join("");
 
-export default { hex2rgb, rgb2hsl, rgb2hex }
+  
+// input: h in [0,360] and s,v in [0,1]
+// output: r,g,b in [0,1]
+export const hsl2rgb = (h:number, s:number, l:number) => {
+  let a = s * Math.min(l, 1 - l);
+  let f = (n, k = (n + h / 30) % 12) =>
+    l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+  return [f(0), f(8), f(4)];
+};

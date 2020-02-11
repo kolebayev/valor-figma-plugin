@@ -1,7 +1,7 @@
 import './style/ui.scss'
 import './ui/uiDrawColors'
 import './ui/uiGetVariables'
-import { rgb2hex } from './utils/colorConverter'
+// import { rgb2hex } from './utils/colorConverter'
 
 const checkShowV2C = document.getElementById('checkboxV2C') as HTMLInputElement
 const checkShowC2V = document.getElementById('checkboxC2V') as HTMLInputElement
