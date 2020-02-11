@@ -1,3 +1,4 @@
+import { processInputValue } from './processInputValue';
 import { hex2rgb, rgb2hsl } from './colorConverter'
 
 const drawRectangle = (parsedString:string) => {
@@ -8,22 +9,7 @@ const drawRectangle = (parsedString:string) => {
   
     const rectangle = figma.createRectangle();
 
-    let rectangleColor;
-    if (variableValue.includes('#') && !variableValue.includes('rgb')) {
-      // work with HEX color
-      rectangleColor = hex2rgb(variableValue);
-    } else if (!variableValue.includes('#') && variableValue.includes('rgb')) {
-      //work with RGB
-      let clearString = variableValue.substring(variableValue.indexOf('(') + 1, variableValue.indexOf(')'));
-      rectangleColor = clearString.split(',')
-      rectangleColor = rectangleColor.map(Number);
-      for (let i = 0; i < 3; i++) {
-        rectangleColor[i] /= 255
-      }
-    }
-
-
-    
+    let rectangleColor = processInputValue(variableValue, {})
     rectangle.y = 0;
     rectangle.x = 0;
     rectangle.name = variableName;

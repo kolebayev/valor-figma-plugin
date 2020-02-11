@@ -1,4 +1,6 @@
+import { processInputValue } from './processInputValue';
 import { hex2rgb, rgb2hsl, hsl2rgb } from './colorConverter'
+
 
 const drawCircle = (parsedString: string) => {
 
@@ -9,37 +11,7 @@ const drawCircle = (parsedString: string) => {
   const textPosX: number = ellipseSize * 1.25
 
   const ellipse = figma.createEllipse();
-  // const ellipseColor = hex2rgb(variableValue);
-  let ellipseColor;
-
-  if (variableValue.includes('#') && !variableValue.includes('rgb')) {
-    // work with HEX input format
-    ellipseColor = hex2rgb(variableValue);
-  } else if (!variableValue.includes('#') && variableValue.includes('rgb')) {
-    //work with RGB input format
-    let clearString = variableValue.substring(variableValue.indexOf('(') + 1, variableValue.indexOf(')'));
-    ellipseColor = clearString.split(',')
-    ellipseColor = ellipseColor.map(Number);
-    for (let i = 0; i < 3; i++) {
-      ellipseColor[i] /= 255
-    }
-  } else if (variableValue.includes('hsl') && !variableValue.includes('#') && !variableValue.includes('rgb')) {
-    // work with HSL input format
-    let clearString = variableValue.substring(variableValue.indexOf('(') + 1, variableValue.indexOf(')'));
-    ellipseColor = clearString.split(',')
-    console.log(ellipseColor)
-    for (let i = 1; i < 3; i++) {
-      ellipseColor[i] = ellipseColor[i].replace('%', '')
-    }
-    ellipseColor = ellipseColor.map(Number);
-    ellipseColor[1] = Math.round(ellipseColor[1]) / 100
-    ellipseColor[2] = Math.round(ellipseColor[2]) / 100
-
-    ellipseColor = [...hsl2rgb(ellipseColor[0], ellipseColor[1], ellipseColor[2]), ellipseColor[3]]
-    variableValue = ellipseColor;
-    console.log(ellipseColor)
-  }
-
+  let ellipseColor = processInputValue(variableValue, {})
   ellipse.y = 3;
   ellipse.x = 0;
   ellipse.name = variableName;
