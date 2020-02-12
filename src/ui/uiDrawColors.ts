@@ -44,7 +44,7 @@ document.getElementById('send').onclick = () => {
 }
 
 useSampleData.addEventListener('click', ()=> {
-  varsInputTextArea.value = 'color-brand-dark: #000;\n--main-bg-color: #f6fbfd;\n$color-base-project:#0071b2;'
+  varsInputTextArea.value = 'color-brand-dark: #000;\n--main-bg-color: hsla(0,0%,100%,0.97);\n$color-base-project: rgba(0,65,102,0.2);'
 })
 
 // onmessage = (e) => {
