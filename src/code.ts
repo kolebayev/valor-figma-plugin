@@ -5,6 +5,7 @@ figma.ui.resize(400 , 390)
 
 figma.ui.onmessage = async msg => {
   await figma.loadFontAsync({ family: "Roboto", style: "Regular" });
+  await figma.loadFontAsync({ family: "Arial", style: "Regular" });
   await figma.loadFontAsync({ family: "Inter", style: "Regular" })
 
   if (msg.type === "input") {
