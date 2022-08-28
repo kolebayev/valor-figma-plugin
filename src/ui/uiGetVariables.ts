@@ -41,12 +41,13 @@ onmessage = (e) => {
     } else if (e.data.pluginMessage.status === 'selectionFilled') {
         let varsString = ''
         e.data.pluginMessage.data.forEach(el => {
-            let hex = rgb2hex(
-                Math.round(el[1].r*255),
-                Math.round(el[1].g*255),
-                Math.round(el[1].b*255)
-            )
-            varsString += `${el[0]}: ${hex};\n`
+            // let hex = rgb2hex(
+            //     Math.round(el[1].r*255),
+            //     Math.round(el[1].g*255),
+            //     Math.round(el[1].b*255)
+            // )
+            // varsString += `${el[0]}: ${hex};\n`
+            varsString += `${el[0]}: rgba(${(el[1].r*255).toFixed(0)}, ${(el[1].g*255).toFixed(0)}, ${(el[1].b*255).toFixed(0)}, ${el[2].toFixed(2)});\n`
         });
         desk.textContent = varsString
         copyVarsBtn.setAttribute('style', 'display:block')

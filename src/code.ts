@@ -58,7 +58,14 @@ figma.ui.onmessage = async msg => {
       let list = []
       for (const node of items) {
         if (node.type === "ELLIPSE" || node.type === "RECTANGLE" ) {
-          list.push([node.name, node.fills[0].color])
+          console.log(node.fills);
+          list.push(
+            [
+              node.name,
+              node.fills[0].color,
+              node.fills[0].opacity,
+            ]
+          );
         } else {
           figma.ui.postMessage({ status: 'selectionPartiallyWrong', data: list })
         }
